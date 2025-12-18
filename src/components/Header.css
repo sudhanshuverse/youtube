@@ -1,0 +1,265 @@
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #0f0f0f;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.icon-button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.icon-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 20px;
+  cursor: pointer;
+}
+
+.nav-center {
+  flex: 0 1 732px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  max-width: 732px;
+}
+
+.search-form {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #303030;
+  border-radius: 40px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+  height: 40px;
+}
+
+.search-form:focus-within {
+  border-color: #1c62b9;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 0 4px 0 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  height: 100%;
+}
+
+.search-form input::placeholder {
+  color: #888;
+}
+
+.search-button {
+  width: 64px;
+  height: 40px;
+  background-color: #222;
+  border: none;
+  border-left: 1px solid #303030;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.search-button:hover {
+  background-color: #2a2a2a;
+}
+
+.search-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.voice-search-button {
+  width: 40px;
+  height: 40px;
+  background-color: #181818;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.voice-search-button:hover {
+  background-color: #2a2a2a;
+}
+
+.voice-search-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-right {
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.create-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 36px;
+  background-color: transparent;
+  border-radius: 18px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  border: 1px solid #303030;
+}
+
+.create-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.create-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.avatar-button {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.avatar-button:hover {
+  opacity: 0.8;
+}
+
+.avatar-button img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .nav-center {
+    flex: 0 1 500px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 792px) {
+  .voice-search-button {
+    display: none;
+  }
+}
+
+@media (max-width: 656px) {
+  .nav-center {
+    display: none;
+  }
+
+  .create-button span {
+    display: none;
+  }
+
+  .create-button {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .nav-right {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 0.5rem;
+  }
+
+  .nav-left {
+    gap: 0.5rem;
+  }
+
+  .notifications-button {
+    display: none;
+  }
+}
