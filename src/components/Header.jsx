@@ -15,6 +15,7 @@ function Header({ isSidebarOpen, setIsSidebarOpen, setQuery }) {
     const handleSearch = () => {
         if (input.trim()) {
             setQuery(input);
+            navigate("/");
             setInput("");
         }
     };
