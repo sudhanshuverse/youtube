@@ -1,47 +1,59 @@
-const API_KEYS = [
-  import.meta.env.VITE_YOUTUBE_API_KEY_1,
-  import.meta.env.VITE_YOUTUBE_API_KEY_2,
-];
+import arr from "./env.js";
 
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 
-/* Get random API key */
-function getRandomApiKey() {
-  const index = Math.floor(Math.random() * API_KEYS.length);
-  return API_KEYS[index];
+// start with first key
+let currentKeyIndex = 0;
+
+function getCurrentKey() {
+  return arr[currentKeyIndex];
 }
 
-/* Generic fetch using random API key */
-async function fetchWithRandomKey(urlBuilder) {
-  const key = getRandomApiKey();
-  const url = urlBuilder(key);
+function switchKey() {
+  currentKeyIndex = (currentKeyIndex + 1) % arr.length;
+  console.warn("🔁 Switched to API key index:", currentKeyIndex);
+}
 
-  const res = await fetch(url);
-  const data = await res.json();
+async function fetchWithKeyRotation(urlBuilder) {
+  let attempts = 0;
 
-  // Handle quota / key error safely
-  if (data?.error) {
+  while (attempts < arr.length) {
+    const key = getCurrentKey();
+    const url = urlBuilder(key);
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    // SUCCESS
+    if (!data?.error) {
+      return data;
+    }
+
+    const reason = data.error?.errors?.[0]?.reason;
+
+    // QUOTA ERROR → switch key
+    if (reason === "quotaExceeded" || reason === "dailyLimitExceeded") {
+      switchKey();
+      attempts++;
+      continue;
+    }
+
+    // OTHER ERRORS
     throw new Error(data.error.message);
   }
 
-  return data;
+  throw new Error("❌ All API keys have exceeded their quota");
 }
 
-/* ===========================
-   API FUNCTIONS
-   =========================== */
-
-/* Search videos */
 export function fetchVideos(query) {
-  return fetchWithRandomKey(
+  return fetchWithKeyRotation(
     (key) =>
       `${BASE_URL}/search?part=snippet&type=video&maxResults=50&q=${query}&key=${key}`
   );
 }
 
-/* Video stats + snippet */
 export function fetchVideoDetails(videoIds) {
-  return fetchWithRandomKey(
+  return fetchWithKeyRotation(
     (key) =>
       `${BASE_URL}/videos?part=snippet,statistics,contentDetails&id=${videoIds.join(
         ","
@@ -49,9 +61,8 @@ export function fetchVideoDetails(videoIds) {
   );
 }
 
-/* Channel data */
 export function fetchChannelDetails(channelId) {
-  return fetchWithRandomKey(
+  return fetchWithKeyRotation(
     (key) =>
       `${BASE_URL}/channels?part=snippet,statistics&id=${channelId}&key=${key}`
   ).then((data) => data.items[0]);
