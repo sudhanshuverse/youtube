@@ -109,7 +109,7 @@ function Home({ isSidebarOpen, query }) {
         <main className={isSidebarOpen ? "main-open" : "main-closed"}>
             <div className="main-container">
                 {videos.map((video) => (
-                    <Link key={video.videoId} to={`https://www.youtube.com/watch?v=${video.videoId}`} className="video-card-container" target="_blank">
+                    <Link key={video.videoId} to={`/video/${video.videoId}`} className="video-card-container">
                         <div className="image-container">
                             <img src={video.thumbnail} alt={video.title} />
                         </div>
