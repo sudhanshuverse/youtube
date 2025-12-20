@@ -1,16 +1,103 @@
-# React + Vite
+# 📺 YouTube Clone (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern YouTube-like video streaming frontend built using **React**, **Vite**, and **CSS**.  
+This project demonstrates component-based architecture, API integration, and responsive UI design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 Browse and watch videos
+- 📂 Sidebar navigation
+- 🎥 Video listing and video pages
+- 🧭 Header with search functionality
+- ⚡ Fast development using Vite
+- 🎨 Custom CSS styling
+- 🌐 API integration for video data
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React (JSX)
+- **Build Tool:** Vite
+- **Styling:** CSS
+- **Linting:** ESLint
+- **API Handling:** Custom utility functions
+
+---
+
+## 📁 Project Structure
+
+```js
+YOUTUBE/
+├── node_modules/
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── Header.css
+│   │   ├── Sidebar.jsx
+│   │   └── Sidebar.css
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Home.css
+│   │   ├── Videos.jsx
+│   │   └── Videos.css
+│   │
+│   ├── utils/
+│   │   ├── api.js
+│   │   ├── env.js
+│   │   └── format.js
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+```
+
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+   ```git
+        git clone https://github.com/sudhanshuverse/youtube-clone-j55.git
+    ```
+
+2. Navigate to the project directory
+
+    ```js
+        cd youtube-clone-j55
+    ```
+
+3. Install dependencies
+    ```js
+        npm install
+    ```
+
+4. Start the development server
+    ```js
+        npm run dev
+    ```
+
+
+5. Install dependencies
+    ```js
+        http://localhost:5173
+    ```
+
+## 🤝 Contributing
+Contributions are welcome!
+Feel free to fork the repo and submit a pull request.
+
+## 📄 License
+This project is licensed under the MIT License.
